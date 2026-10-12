@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Field Task – Task Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><h1>Field Task</h1><p class="sub" id="date"></p></div>
+    <div class="clock out" id="clock" aria-label="Current time">--:--</div>
+  </header>
+
+  <section class="progress out" aria-label="Progress">
+    <div class="prow"><span id="pLabel">0 of 0 done</span><span id="pPct">0%</span></div>
+    <div class="bar in"><div class="fill" id="fill"></div></div>
+  </section>
+
+  <div class="add">
+    <input class="task-in in" id="text" type="text" placeholder="What needs to be done?" maxlength="120" aria-label="New task">
+    <div class="addrow">
+      <label class="lbl">Priority
+        <select class="field out" id="pri">
+          <option value="low">Low</option>
+          <option value="med" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label class="lbl">Due date
+        <input class="field out" id="due" type="date">
+      </label>
+      <label class="lbl">Alarm (optional)
+        <input class="field out" id="alarm" type="time">
+      </label>
+      <button class="btn primary" id="addBtn">Add task</button>
+    </div>
+  </div>
+
+  <div class="tools">
+    <div class="chips" role="group" aria-label="Filter tasks">
+      <button class="chip" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="active" aria-pressed="false">Active</button>
+      <button class="chip" data-f="done" aria-pressed="false">Done</button>
+    </div>
+    <input class="field in search" id="q" type="search" placeholder="Search tasks" aria-label="Search tasks">
+    <select class="field out" id="sort" aria-label="Sort tasks" style="width:auto">
+      <option value="new">Newest</option>
+      <option value="pri">Priority</option>
+      <option value="due">Due date</option>
+    </select>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div class="foot">
+    <span id="left"></span>
+    <div class="foot-btns">
+      <button class="btn" id="clearDone">Clear completed</button>
+      <button class="btn" id="clearAll">Clear all</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden role="status"><span id="toastMsg"></span><button id="undo">Undo</button></div>
+
+<div class="overlay" id="ring" hidden role="alertdialog" aria-labelledby="ringTitle">
+  <div class="ring-card out">
+    <div class="bell">⏰</div>
+    <h2 id="ringTitle">Alarm</h2>
+    <p id="ringText"></p>
+    <div class="ring-btns">
+      <button class="btn" id="snooze">Snooze 5 min</button>
+      <button class="btn" id="ringDone">Task completed ✓</button>
+      <button class="btn primary" id="dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
